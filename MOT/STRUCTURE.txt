@@ -19,12 +19,4 @@ MOT/
 │   ├── create_file_registry.sql Control table DDL
 │   └── create_target_table.sql  Data table DDL
 ├── README.md                    User documentation
-├── CLAUDE.md                    Developer guidance
 └── STRUCTURE.txt                This file
-
-Total: 19 files
-- 11 Python modules (1,114 LOC)
-- 1 configuration file
-- 2 SQL scripts
-- 4 documentation files
-- 1 main executable (pyxlsxscanner.py)
