@@ -1,0 +1,63 @@
+MOT INGESTION PIPELINE - QUICK START
+=====================================
+
+MAIN ENTRYPOINT:
+----------------
+pyxlsxscanner.py
+
+
+BASIC EXECUTION:
+----------------
+python pyxlsxscanner.py --config config/config.yaml
+
+
+DRY RUN (no data loading):
+---------------------------
+python pyxlsxscanner.py --config config/config.yaml --dry-run
+
+
+DEBUG MODE:
+-----------
+python pyxlsxscanner.py --config config/config.yaml --log-level DEBUG
+
+
+USING ENVIRONMENT VARIABLES:
+-----------------------------
+export MOT_INPUT_DIR=./input
+export MOT_BQ_PROJECT=my-project
+export MOT_BQ_DATASET=my_dataset
+export MOT_BQ_TABLE=my_table
+export MOT_GCS_BUCKET=my-bucket
+python pyxlsxscanner.py
+
+
+BEFORE FIRST RUN:
+-----------------
+1. Update config/config.yaml with your GCP settings
+2. Create BigQuery tables:
+   bq query --use_legacy_sql=false < sql/create_file_registry.sql
+   bq query --use_legacy_sql=false < sql/create_target_table.sql
+3. Authenticate:
+   gcloud auth application-default login
+   OR
+   export GOOGLE_APPLICATION_CREDENTIALS=/path/to/key.json
+
+
+EXIT CODES:
+-----------
+0 = Success
+1 = Partial failure (some files failed)
+2 = Pipeline initialization failure
+3 = Fatal error
+
+
+DEPENDENCIES:
+-------------
+xlsx2csv>=0.8.0
+pyarrow>=15.0.0
+google-cloud-storage>=2.14.0
+google-cloud-bigquery>=3.17.0
+pyyaml>=6.0.1
+
+Note: JSON logging uses stdlib only (no external logging deps)
+Note: pandas NOT required - uses csv module + pyarrow directly

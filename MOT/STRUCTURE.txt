@@ -1,0 +1,30 @@
+MOT/
+├── pyxlsxscanner.py             Main executable entrypoint
+├── src/mot_ingestion/
+│   ├── __init__.py              Package initialization
+│   ├── __main__.py              CLI implementation
+│   ├── config.py                Configuration management
+│   ├── discovery.py             File discovery
+│   ├── checksum.py              Change detection
+│   ├── parser.py                XLSX parsing
+│   ├── schema.py                Schema normalization
+│   ├── serializer.py            Parquet/CSV output
+│   ├── storage.py               GCS operations
+│   ├── bigquery.py              BigQuery loading
+│   ├── state.py                 State management
+│   └── pipeline.py              Orchestration
+├── config/
+│   └── config.yaml              Configuration example
+├── sql/
+│   ├── create_file_registry.sql Control table DDL
+│   └── create_target_table.sql  Data table DDL
+├── README.md                    User documentation
+├── CLAUDE.md                    Developer guidance
+└── STRUCTURE.txt                This file
+
+Total: 19 files
+- 11 Python modules (1,114 LOC)
+- 1 configuration file
+- 2 SQL scripts
+- 4 documentation files
+- 1 main executable (pyxlsxscanner.py)

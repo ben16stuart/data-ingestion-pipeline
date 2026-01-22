@@ -1,0 +1,49 @@
+input_directory: ./input
+
+file_pattern: "**/*.xlsx"
+sheet_name: 0
+
+output_format: parquet
+checksum_algorithm: sha256
+
+temp_directory: /tmp/mot-ingestion
+log_level: INFO
+dry_run: false
+
+ignore_patterns:
+  - "~$*"
+  - ".~*"
+  - "*.tmp"
+  - "*.temp"
+
+bigquery:
+  project_id: your-gcp-project-id
+  dataset: your_dataset
+  table: your_table
+  registry_table: file_registry
+  location: US
+
+gcs:
+  bucket: your-gcs-bucket
+  prefix: mot-ingestion
+  project_id: your-gcp-project-id
+
+schema:
+  - name: id
+    type: INTEGER
+    mode: REQUIRED
+  - name: name
+    type: STRING
+    mode: NULLABLE
+  - name: email
+    type: STRING
+    mode: NULLABLE
+  - name: created_date
+    type: DATE
+    mode: NULLABLE
+  - name: amount
+    type: FLOAT
+    mode: NULLABLE
+  - name: active
+    type: BOOLEAN
+    mode: NULLABLE
